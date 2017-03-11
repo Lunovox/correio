@@ -1,4 +1,4 @@
-Adds mailbox and mail paper that allow ordinary players to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
+Adds mailbox and mail paper that allows ordinary jogadores, without to use commands, to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
 
 Licence: 
  * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
