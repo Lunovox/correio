@@ -1,6 +1,9 @@
 # CORREIO
 Adds mailbox and mail paper that allow ordinary players to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
 
+**Screenshot of Mod:**
+![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
+
 **Dependencies:**
   * default (Minetest Game Included)
   * dye (Minetest Game Included)
@@ -29,6 +32,3 @@ Adds mailbox and mail paper that allow ordinary players to send messages to each
  * ````/read```` or ````/inbox```` or ````/ler```` → Displays incoming messages. You need priv 'postman'.
  * ````/clearmails```` or ````/limpar```` → Delete all emails already read by the player. You need priv 'postman'.
  * ````/correio```` → Displays the above mentioned commands.
- 		
-**Screenshot of Mod:**
-![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
