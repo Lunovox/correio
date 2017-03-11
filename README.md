@@ -11,8 +11,8 @@ Adds mailbox and mail paper that allow ordinary players to send messages to each
 
 **Optional Dependencies:**
   * [intllib](https://github.com/minetest-mods/intllib) → Facilitates the translation of several others mods into your native language, or other languages.
-  * brazutec?
-  * lunomobs?
+  * [brazutec](https://github.com/BrunoMine/brazutec) → Mod that adds a laptop to the minetest game
+  * lunomobs → Change the way you craft the letter, to include chicken feathers in the recipe
   
 **Licence:**
  * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
