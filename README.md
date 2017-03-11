@@ -1,5 +1,5 @@
 # CORREIO
-Adds mailbox and mail paper that allow ordinary players to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
+Adds mailbox and mail paper that allows ordinary jogadores, without use commands, to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
 
 **Screenshot of Mod:**
 ![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
