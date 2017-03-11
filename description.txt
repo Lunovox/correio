@@ -1,4 +1,4 @@
-Adiciona caixa de correio e cartas craftaveis que permitem que os jogadores comuns enviem mensagens uns aos outros mesmo que o destinatario nao esteja online. O jogador que receber uma mensagem sera avisado com um simbolo de carta em sua tela.
+Adds mailbox and mail paper that allow ordinary players to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
 
 Licence: 
  * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
@@ -6,21 +6,21 @@ Licence:
 Developers:
  * Lunovox <lunovox@openmailbox.org>
  
-Comandos:
- * /broadcast <mensagem>
+Commands:
+ * /broadcast <message>
  * /publicar <mensagem>
- 		(Envia email para todos os players cadastrados. Necessita de priv 'postman'.)
+ 		(Send email to all registered players. You need priv 'postman'.)
  * /delolds
- 		(Apaga os email com mais de trinta dias em todo o servidor. Serve para aliviar a memoria do servidor. Necessita de priv 'postman'.)
- * /mail [<ToName> <message>]
- * /escrever [<destinatario> <mensagem>]
- 		(Se nao for digitado parametros ira abrir um painel para preencher o destinatario e a mensagem que deseja enviar. Necessita de priv 'postman'.)
+ 		(Delete emails that are more than 30 days old on the whole server. Serves to relieve server memory. You need priv 'postman'.)
+ * /mail [<ToPlayer> <Message>]
+ * /escrever [<Destinatario> <mensagem>]
+ 		(If you do not enter parameters you will open a panel to fill the recipient and the message you want to send. You need priv 'postman'.)
  * /read
  * /inbox
  * /ler
- 		(Exibe as mensagens recebidas. Necessita de priv 'postman'.)
+ 		(Displays incoming messages. You need priv 'postman'.)
  * /clearmails
  * /limpar
- 		(apaga todos os email ja lidos pelo player. Necessita de priv 'postman'.)
- * /lunocartas
- 		(Exibe tos este comandos acima citados.)
+ 		(Delete all emails already read by the player. You need priv 'postman'.)
+ * /correio
+ 		(Displays the above mentioned commands.)

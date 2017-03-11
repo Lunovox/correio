@@ -109,7 +109,7 @@ minetest.register_chatcommand("limpar", {
 	end,
 })
 
-minetest.register_chatcommand("lunocartas", {
+minetest.register_chatcommand("correio", {
 	params = "",
 	description = "Exibe todos os comando deste mod",
 	privs = {},
