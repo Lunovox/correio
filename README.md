@@ -23,23 +23,12 @@ Adds mailbox and mail paper that allow ordinary players to send messages to each
 	* ````max_days_validate = 30```` → Limit how long a mail can be stored inside the mailbox. This prevents emails from players that did abandon the server.
 
 **Commands:**
- * ````/broadcast <mensagem>````
- * ````/publicar <mensagem>````
- 		(Send email to all registered players. You need priv 'postman'.)
- * ````/delolds````
- 		(Delete emails that are more than 30 days old on the whole server. Serves to relieve server memory. You need priv 'postman'.)
- * ````/mail [<ToPlayer> <Message>]````
- * ````/escrever [<Destinatario> <mensagem>]````
- 		(If you do not enter parameters you will open a panel to fill the recipient and the message you want to send. You need priv 'postman'.)
- * ````/read````
- * ````/inbox````
- * ````/ler````
- 		(Displays incoming messages. You need priv 'postman'.)
- * ````/clearmails````
- * ````/limpar````
- 		(Delete all emails already read by the player. You need priv 'postman'.)
- * ````/correio````
- 		(Displays the above mentioned commands.)
+ * ````/broadcast <mensagem>```` or ````/publicar <mensagem>```` → Send email to all registered players. You need priv 'postman'.
+ * ````/delolds```` → Delete emails that are more than 30 days old on the whole server. Serves to relieve server memory. You need priv 'postman'.
+ * ````/mail [<ToPlayer> <Message>]```` or ````/escrever [<Destinatario> <mensagem>]```` → If you do not enter parameters you will open a panel to fill the recipient and the message you want to send. You need priv 'postman'.
+ * ````/read```` or ````/inbox```` or ````/ler```` → Displays incoming messages. You need priv 'postman'.
+ * ````/clearmails```` or ````/limpar```` → Delete all emails already read by the player. You need priv 'postman'.
+ * ````/correio```` → Displays the above mentioned commands.
  		
 **Screenshot of Mod:**
 ![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
