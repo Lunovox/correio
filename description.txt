@@ -1,0 +1,26 @@
+Adiciona caixa de correio e cartas craftaveis que permitem que os jogadores comuns enviem mensagens uns aos outros mesmo que o destinatario nao esteja online. O jogador que receber uma mensagem sera avisado com um simbolo de carta em sua tela.
+
+Licence: 
+ * GNU AGPL: https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License
+
+Developers:
+ * Lunovox <lunovox@openmailbox.org>
+ 
+Comandos:
+ * /broadcast <mensagem>
+ * /publicar <mensagem>
+ 		(Envia email para todos os players cadastrados. Necessita de priv 'postman'.)
+ * /delolds
+ 		(Apaga os email com mais de trinta dias em todo o servidor. Serve para aliviar a memoria do servidor. Necessita de priv 'postman'.)
+ * /mail [<ToName> <message>]
+ * /escrever [<destinatario> <mensagem>]
+ 		(Se nao for digitado parametros ira abrir um painel para preencher o destinatario e a mensagem que deseja enviar. Necessita de priv 'postman'.)
+ * /read
+ * /inbox
+ * /ler
+ 		(Exibe as mensagens recebidas. Necessita de priv 'postman'.)
+ * /clearmails
+ * /limpar
+ 		(apaga todos os email ja lidos pelo player. Necessita de priv 'postman'.)
+ * /lunocartas
+ 		(Exibe tos este comandos acima citados.)
