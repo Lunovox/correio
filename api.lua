@@ -1,4 +1,4 @@
-minetest.register_privilege("postman", "Jogador pode enviar mensagens diretamente por comando.")
+minetest.register_privilege("postman", S("Player can send messages directly by command"))
 
 modCorreio.setDataBase = function(nameto, tblCorreio)
 	modsavevars.setCharValue(nameto, "tblCorreio", tblCorreio)
@@ -43,25 +43,25 @@ modCorreio.chat_writemail = function(name, param) --Usado apenas por comando de 
 			local to, msg = string.match(param, "([%a%d_]+) (.+)")
 			
 			if not to or not msg then
-				minetest.chat_send_player(name,"/mail <jogador> <mensagem>")
+				minetest.chat_send_player(name,"/mail <to_player> <mensagem>")
 				return false
 			end
 			
-			print("Remetente...: "..name)
-			print("Destinatario: "..to)
-			print("Mensagem....: "..msg)
+			print(S("Sender")..": "..name) --Remetente
+			print(S("Addressee")..": "..to) --Destinatário
+			print(S("Message")..": "..msg) --Mensagem
 			
 			
 			local result = modCorreio.set_mail(name, to, msg)
 			if result~=nil then
-				minetest.chat_send_player(name,"Sua mensagem foi enviada para '"..to.."'!")
+				minetest.chat_send_player(name,S("Your message was sent to '$s'!"):format(to))
 				
 				return true
 			else
-				minetest.chat_send_player(name,"Ocorreu um erro ao enviar sua mensagem!!!")
+				minetest.chat_send_player(name, S("There was an error sending your message!!!"))
 			end
 		else
-			minetest.chat_send_player(name,"/mail <playername> <mensagem>: Envia email para um player.")
+			minetest.chat_send_player(name,S("/mail [<playername> <message>]: Sends email to a player"))
 		end
 	end
 	return false
@@ -91,14 +91,14 @@ modCorreio.chat_broadcast = function(name, param) --Usado apenas por comando de 
 				local contsend = modCorreio.set_broadcast(name, param)
 				if contsend>=1 then
 					--minetest.sound_play("sfx_alertfire", {object=player, max_hear_distance = 1000})  
-					minetest.chat_send_player(name,"Sua carta foi enviada para '"..contsend.."' players.")
+					minetest.chat_send_player(name,S("Your letter was sent to '%02d' players"):format(contsend))
 					
 				else
-					minetest.chat_send_player(name,"Nao foi enviada esta carta para nenhum player.")
+					minetest.chat_send_player(name,S("This letter was not sent to any player"))
 				end
 				return contsend
 			else
-				minetest.chat_send_player(name,"/broadcast <mensagem>: Envia cartas para todos os jogadores cadastrados.")
+				minetest.chat_send_player(name,S("/broadcast <message>: Sends letters to all registered players"))
 			end
 		end
 	end
@@ -244,7 +244,7 @@ modCorreio.chat_readmail = function(name) --Usado apenas por comando de chat
 				
 				return #mails
 			else
-				minetest.chat_send_player(name, "Voce nao tem nenhuma mensagem...")
+				minetest.chat_send_player(name, S("You have no letters..."))
 				return 0
 			end
 		end
@@ -291,13 +291,13 @@ modCorreio.chat_delreadeds = function(playername) --Usado apenas por comando de 
 			local apagados = modCorreio.del_readeds(playername)
 			if apagados~=nil and type(apagados)=="number" then
 				if apagados>=1 then
-					minetest.chat_send_player(playername, "Cartas Destruidas: "..apagados)
+					minetest.chat_send_player(playername, S("Letters Destroyed")..": "..apagados)
 					
 				else
-					minetest.chat_send_player(playername, "Voce nao tem nenhuma carta lida para destruir.")
+					minetest.chat_send_player(playername, S("You have no letter readed to destroy"))
 				end
 			else
-				minetest.chat_send_player(playername, "Erro ao apagar suas cartas.")
+				minetest.chat_send_player(playername, "[ERRO] "..S("There was an error deleting your letters"))
 			end
 			return apagados
 		end
@@ -353,14 +353,14 @@ modCorreio.chat_delolds = function(playername) --Usado apenas por comando de cha
 			local contdels = modCorreio.del_olds()
 			if contdels~=nil and type(contdels)=="number" then
 				if contdels>=1 then
-					minetest.chat_send_player(playername, "[CORREIO] "..contdels.." mensagens com mais de "..modCorreio.max_days_validate.." dias foram apagadas no servidor.")
-					
+					minetest.chat_send_player(playername, "[CORREIO] "..
+					S("The total of %02d letters with a deadline above %02d days have been deleted on the server"):format(contdels,modCorreio.max_days_validate))
 				else
-					minetest.chat_send_player(playername,"[CORREIO] Nao foi apagado nenhuma mensagem com mais de "..modCorreio.max_days_validate.." dias!")
+					minetest.chat_send_player(playername,"[CORREIO] "..S("No letter with deadline above %02d days was deleted"):format(modCorreio.max_days_validate))
 				end
 				return contdels
 			else
-				minetest.chat_send_player(playername,"[CORREIO] modCorreio.chat_delolds(playername) Ocorreu um erro ao apagar todos os email antigos. contdels='"..dump(contdels).."'")
+				minetest.chat_send_player(playername,"[ERRO: modCorreio.chat_delolds(playername)] "..S("There was an error deleting all the '%s' old emails"):format(dump(contdels)))
 			end
 		end
 	end
@@ -405,11 +405,7 @@ modCorreio.hud_print = function(player)
 		local unreadeds = modCorreio.get_countunreaded(playername)
 		if unreadeds~=nil and type(unreadeds)=="number" and unreadeds>=1 then
 			local mensagem=""
-			if unreadeds==1 then
-				mensagem="Voce tem 1 email nao lido \nem sua caixa de correio!"
-			else
-				mensagem="Voce tem "..unreadeds.." emails nao lidos \nem sua caixa de correio!"
-			end
+			mensagem=S("You have %02d unread emails \nin your mailbox!"):format(unreadeds)
 			
 			modCorreio.huds[playername].image = player:hud_add({
 				hud_elem_type = "image",
