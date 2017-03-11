@@ -7,10 +7,10 @@ Adds mailbox and mail paper that allow ordinary players to send messages to each
 **Dependencies:**
   * default (Minetest Game Included)
   * dye (Minetest Game Included)
-  * [lib_savevars](https://github.com/Lunovox/lib_savevars) → Library of writing of variables
+  * [lib_savevars](https://github.com/Lunovox/lib_savevars) → Library to save variables in file ````variables.tbl```` per others mods.
 
 **Optional Dependencies:**
-  * [intllib](https://github.com/minetest-mods/intllib) → Facilitates the translation of several other mods into your native language, or other languages.
+  * [intllib](https://github.com/minetest-mods/intllib) → Facilitates the translation of several others mods into your native language, or other languages.
   * brazutec?
   * lunomobs?
   
