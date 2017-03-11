@@ -19,4 +19,5 @@ Adds mailbox and mail paper that allow ordinary players to send messages to each
 
 **Settings:**
   * Change the file **'config.lua'** to change the initial settings of the mod, such as:
-	* ````max_days_validate = 30````
+  	* ````hud_delay = 5```` →  Delay in seconds of notice of arrival of the new message. Need to be longer than 5 seconds to not cause lag on server
+	* ````max_days_validate = 30```` → Limit how long a mail can be stored inside the mailbox. This prevents emails from players that did abandon the server.
