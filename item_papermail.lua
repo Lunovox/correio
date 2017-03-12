@@ -62,7 +62,7 @@ minetest.register_craftitem("correio:papermail", {
 
 if minetest.get_modpath("lunomobs") then
 	minetest.register_craft({
-		output = 'correio:papermail',
+		output = 'correio:papermail 4',
 		recipe = {
 			{"lunomobs:feather"},
 			{"dye:violet"},
@@ -71,7 +71,7 @@ if minetest.get_modpath("lunomobs") then
 	})
 else
 	minetest.register_craft({
-		output = 'correio:papermail',
+		output = 'correio:papermail 4',
 		recipe = {
 			{"default:stick"}, --{"lunorecipes:feather"},
 			{"dye:violet"},
