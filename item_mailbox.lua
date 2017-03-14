@@ -59,7 +59,7 @@ end
 minetest.register_on_player_receive_fields(function(sender, formname, fields)
 	if formname == "modCorreio.mailbox"  then
 		local playername = sender:get_player_name()
-		minetest.log('action',"[CORREIO] fields = "..dump(fields))
+		--minetest.log('action',"[CORREIO] fields = "..dump(fields))
 		if fields.openinbox then
 			minetest.log('action',"modCorreio.openinbox("..playername..")")
 			modCorreio.openinbox(playername)

@@ -1,10 +1,12 @@
 if minetest.get_modpath("brazutec") and type(brazutec_laptop)=="table" then
-	local imagem_para_enviar = "obj_mail.png";
-	local etiqueta_para_enviar = "brazutec_abrirmsg";
-	brazutec_instalar_em_cub(imagem_para_enviar,etiqueta_para_enviar)
+	brazutec_instalar_em_cub("obj_mail.png","brazutec_abrirmsg")
 	minetest.register_on_player_receive_fields(function(player, formname, fields)
-		if fields.brazutec_abrirmsg then
-			lunocartas.openinbox(player)
+		--minetest.log("action","formname="..dump(formname))
+		--minetest.log("action","fields="..dump(fields))
+		if fields.brazutec_abrirmsg~=nil then
+			local playername = player:get_player_name()
+			minetest.log("action","[CORREIO] O jogador '"..playername.."' está tentando abrir a caixa de correio pelo notebook brazutec!")
+			modCorreio.openinbox(playername)
 		end
 	end)
 end
