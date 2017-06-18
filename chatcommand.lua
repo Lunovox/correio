@@ -120,6 +120,7 @@ minetest.register_chatcommand("correio", {
 		minetest.chat_send_player(name, "### Desenvolvedor:'Lunovox Heavenfinder'<rui.gravata@gmail.com>                          ###", false)
 		minetest.chat_send_player(name, "### Languages: English (Default), Portuguese                                             ###", false)
 		minetest.chat_send_player(name, "### Download: https://github.com/Lunovox/correio                                         ###", false)
+		minetest.chat_send_player(name, "### License GNU AGPL ( https://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License ) ###", false)
 		minetest.chat_send_player(name, "############################################################################################", false)
 		minetest.chat_send_player(name, "CRAFTS ADICIONADOS:", false)
 		minetest.chat_send_player(name, "   * Caixa de correio (Papel[B2]+Tabua[A1A2A3B1B3C1C2C3])", false)
