@@ -31,7 +31,9 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 					local carta = modCorreio.set_mail(sendername, fields.toplayer, fields.message)
 					if carta~=nil then
 						local itemWielded = sender:get_wielded_item()
-						if itemWielded:get_name()=="correio:papermail" and not minetest.setting_getbool("creative_mode") then
+						if itemWielded:get_name()=="correio:papermail" 
+							and not core.setting_getbool("creative_mode")
+						then
 							itemWielded:take_item()
 							sender:set_wielded_item(itemWielded)
 						end
@@ -82,6 +84,5 @@ end
 
 
 minetest.register_alias("mail"				,"correio:papermail")
-minetest.register_alias("letter"				,"correio:papermail")
 minetest.register_alias(S("letter")			,"correio:papermail")
 

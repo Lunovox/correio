@@ -404,8 +404,7 @@ modCorreio.hud_print = function(player)
 		
 		local unreadeds = modCorreio.get_countunreaded(playername)
 		if unreadeds~=nil and type(unreadeds)=="number" and unreadeds>=1 then
-			local mensagem=""
-			mensagem=S("You have %02d unread emails \nin your mailbox!"):format(unreadeds)
+			local mensagem=S("You have %02d unread emails \nin your mailbox!"):format(unreadeds)
 			
 			modCorreio.huds[playername].image = player:hud_add({
 				hud_elem_type = "image",

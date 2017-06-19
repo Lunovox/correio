@@ -169,5 +169,4 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_alias("mailbox"			,"correio:mailbox")
 minetest.register_alias(S("mailbox")		,"correio:mailbox")
