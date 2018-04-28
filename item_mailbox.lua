@@ -102,7 +102,7 @@ local mailbox_tiles = {
 	"tex_mailbox_sides.png", --direita
 	"tex_mailbox_sides.png".."^[transformFX", --esquerda
 	"tex_mailbox_back.png", --traz
-	"tex_mailbox_from.png", --frente
+	"tex_mailbox_from.png^"..S("tex_mailbox_from_en.png"), --frente
 	--
 }
 

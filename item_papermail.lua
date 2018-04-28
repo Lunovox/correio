@@ -56,7 +56,7 @@ minetest.register_craftitem("correio:papermail", {
 	description = S("Letter of Mail (Send a letter to other player)"),
 	inventory_image = "obj_mail.png",
 	--stack_max=16, --Acumula 16 por slot
-	--groups = { eat=1 },
+	groups = { paper=1, dye=1 },
 	on_use = function(itemstack, user, pointed_thing)
 		modCorreio.openpapermail(user:get_player_name())
 	end,
@@ -67,7 +67,7 @@ if minetest.get_modpath("lunomobs") then
 		output = 'correio:papermail 4',
 		recipe = {
 			{"lunomobs:feather"},
-			{"dye:violet"},
+			{"group:dye"}, --{"dye:violet"},
 			{"default:paper"},
 		}
 	})
@@ -76,7 +76,7 @@ else
 		output = 'correio:papermail 4',
 		recipe = {
 			{"default:stick"}, --{"lunorecipes:feather"},
-			{"dye:violet"},
+			{"group:dye"}, --{"dye:violet"},
 			{"default:paper"},
 		}
 	})

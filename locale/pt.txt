@@ -20,6 +20,9 @@ Letters Destroyed=Cartas Destruidas
 /mail [<playername> <message>]: Sends email to a player=/escrever [<destinatário> <mensagem>]: Envia email para um player
 /broadcast <message>: Sends letters to all registered players=/publicar <mensagem>: Envia cartas para todos os jogadores cadastrados
 
+# ------------- Texture Mailbox ---------------------
+
+tex_mailbox_from_en.png=tex_mailbox_from_pt.png
 
 # ------------- Mailbox and Papermail ---------------------
 

@@ -74,9 +74,12 @@ modCorreio.set_broadcast = function(namefrom, message)
 	local contsend = 0
 	if tblPlayers~=nil and type(tblPlayers)=="table" then
 		for nameto, _ in pairs(tblPlayers) do 
-			local mens = modCorreio.set_mail(namefrom, nameto, message)
-			if mens~=nil then
-				contsend = contsend + 1
+			local last_login = modsavevars.getCharValue(nameto, "last_login")
+			if last_login~=nil and last_login~="" and last_login < os.time() + (60*60*24*30) then --30 dias
+				local mens = modCorreio.set_mail(namefrom, nameto, message)
+				if mens~=nil then
+					contsend = contsend + 1
+				end
 			end
 		end
 	end
@@ -445,4 +448,10 @@ end
 
 minetest.register_globalstep(function(dtime)
 	modCorreio.hud_check()
+end)
+
+minetest.register_on_prejoinplayer(function(playername, ip)
+	minetest.chat_send_all(playername.."["..ip.."]  tries to connect.")
+	--local now = os.date("%Y-%m-%d %Hh:%Mm:%Ss",os.time())
+	modsavevars.setCharValue(playername, "last_login", os.time())
 end)
