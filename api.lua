@@ -449,9 +449,3 @@ end
 minetest.register_globalstep(function(dtime)
 	modCorreio.hud_check()
 end)
-
-minetest.register_on_prejoinplayer(function(playername, ip)
-	minetest.chat_send_all(playername.."["..ip.."]  tries to connect.")
-	--local now = os.date("%Y-%m-%d %Hh:%Mm:%Ss",os.time())
-	modsavevars.setCharValue(playername, "last_login", os.time())
-end)
