@@ -56,7 +56,7 @@ minetest.register_craftitem("correio:papermail", {
 	description = S("Letter of Mail (Send a letter to other player)"),
 	inventory_image = "obj_mail.png",
 	--stack_max=16, --Acumula 16 por slot
-	groups = { paper=1, dye=1 },
+	groups = { letter=1, mail=1 },
 	on_use = function(itemstack, user, pointed_thing)
 		modCorreio.openpapermail(user:get_player_name())
 	end,
