@@ -1,4 +1,7 @@
-minetest.register_privilege("postman", S("Player can send messages directly by command"))
+minetest.register_privilege("postman",  {
+	description=S("Player can send messages directly by command"), 
+	give_to_singleplayer=false,
+})
 
 modCorreio.setDataBase = function(nameto, tblCorreio)
 	modsavevars.setCharValue(nameto, "tblCorreio", tblCorreio)
