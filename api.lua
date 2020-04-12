@@ -271,7 +271,7 @@ modCorreio.del_mail = function(playername, mailnumber)
 	return false
 end
 
-modCorreio.del_readeds = function(playername)
+modCorreio.del_readeds = function(playername) --Bugado
 	if type(playername)=="string" and playername~="" then
 		local mails = modCorreio.getDataBase(playername).messages
 		if type(mails)=="table" then
