@@ -2,10 +2,6 @@
 
 Adds mailbox and mail paper that allows ordinary Jogadores, without to use commands, to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
 
-### **Screenshot of Mod:**
-
-![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
-
 ### **Dependencies:**
 
   * default (Minetest Game Included)
@@ -15,7 +11,7 @@ Adds mailbox and mail paper that allows ordinary Jogadores, without to use comma
 ### **Optional Dependencies:**
 
   * [intllib](https://github.com/minetest-mods/intllib) → Facilitates the translation of several others mods into your native language, or other languages.
-  * [Super UFO](https://gitlab.com/lunovox/super-ufo)
+  * [Super UFO](https://gitlab.com/lunovox/super-ufo) → Add a UFO that allows the player to have a fly house. 
   * [brazutec](https://github.com/BrunoMine/brazutec) → Mod that adds a laptop to the minetest game
   * lunomobs → Change the way you craft the letter, to include chicken feathers in the recipe
 
@@ -73,4 +69,7 @@ Adds mailbox and mail paper that allows ordinary Jogadores, without to use comma
 	* Translate all lines. But, just here that stems the right of the equals symbol (=). 
 		* Example for French Language: ````MAIL LETTER=LETTRE DE COURRIER````
 
+### **Screenshot of Mod:**
+
+![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
 
