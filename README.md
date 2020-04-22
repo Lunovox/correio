@@ -2,6 +2,14 @@
 
 Adds mailbox and mail paper that allows ordinary Jogadores, without to use commands, to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
 
+### **Screenshot of Mod:**
+
+![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
+
+### **Internacionalization**
+
+ * There is still no internationalization in progress!
+
 ### **Dependencies:**
 
   * default (Minetest Game Included)
@@ -68,8 +76,4 @@ Adds mailbox and mail paper that allows ordinary Jogadores, without to use comma
 	* Open the file [````locale/<your_language>.txt````] in a simple text editor.
 	* Translate all lines. But, just here that stems the right of the equals symbol (=). 
 		* Example for French Language: ````MAIL LETTER=LETTRE DE COURRIER````
-
-### **Screenshot of Mod:**
-
-![](https://raw.githubusercontent.com/Lunovox/correio/master/screenshot.png)
 
