@@ -5,7 +5,9 @@ if minetest.get_modpath("brazutec") and type(brazutec_laptop)=="table" then
 		--minetest.log("action","fields="..dump(fields))
 		if fields.brazutec_abrirmsg~=nil then
 			local playername = player:get_player_name()
-			minetest.log("action","[CORREIO] O jogador '"..playername.."' está tentando abrir a caixa de correio pelo notebook brazutec!")
+			minetest.log("action","[CORREIO] "..modCorreio.translate(
+         "Player '% s' is trying to open the mailbox via the brazutec notebook!"
+      ):format(playername))
 			modCorreio.openinbox(playername)
 		end
 	end)

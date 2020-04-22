@@ -1,5 +1,10 @@
 minetest.register_privilege("postman",  {
-	description=S("Player can send messages directly by command"), 
+	description=modCorreio.translate("Player can send messages directly by command."), 
+	give_to_singleplayer=false,
+})
+
+minetest.register_privilege("walkingreader",  {
+	description=modCorreio.translate("Player can readd messages directly by command."), 
 	give_to_singleplayer=false,
 })
 
@@ -50,21 +55,21 @@ modCorreio.chat_writemail = function(name, param) --Usado apenas por comando de 
 				return false
 			end
 			
-			print(S("Sender")..": "..name) --Remetente
-			print(S("Addressee")..": "..to) --Destinatário
-			print(S("Message")..": "..msg) --Mensagem
+			print(modCorreio.translate("Sender")..": "..name) --Remetente
+			print(modCorreio.translate("Addressee")..": "..to) --Destinatário
+			print(modCorreio.translate("Message")..": "..msg) --Mensagem
 			
 			
 			local result = modCorreio.set_mail(name, to, msg)
 			if result~=nil then
-				minetest.chat_send_player(name,S("Your message was sent to '$s'!"):format(to))
+				minetest.chat_send_player(name,modCorreio.translate("Your message was sent to '$s'!"):format(to))
 				
 				return true
 			else
-				minetest.chat_send_player(name, S("There was an error sending your message!!!"))
+				minetest.chat_send_player(name, modCorreio.translate("There was an error sending your message!!!"))
 			end
 		else
-			minetest.chat_send_player(name,S("/mail [<playername> <message>]: Sends email to a player"))
+			minetest.chat_send_player(name,modCorreio.translate("/mail [<playername> <message>]: Sends email to a player"))
 		end
 	end
 	return false
@@ -97,14 +102,14 @@ modCorreio.chat_broadcast = function(name, param) --Usado apenas por comando de 
 				local contsend = modCorreio.set_broadcast(name, param)
 				if contsend>=1 then
 					--minetest.sound_play("sfx_alertfire", {object=player, max_hear_distance = 1000})  
-					minetest.chat_send_player(name,S("Your letter was sent to '%02d' players"):format(contsend))
+					minetest.chat_send_player(name,modCorreio.translate("Your letter was sent to '%02d' players"):format(contsend))
 					
 				else
-					minetest.chat_send_player(name,S("This letter was not sent to any player"))
+					minetest.chat_send_player(name,modCorreio.translate("This letter was not sent to any player"))
 				end
 				return contsend
 			else
-				minetest.chat_send_player(name,S("/broadcast <message>: Sends letters to all registered players"))
+				minetest.chat_send_player(name,modCorreio.translate("/broadcast <message>: Sends letters to all registered players"))
 			end
 		end
 	end
@@ -250,7 +255,7 @@ modCorreio.chat_readmail = function(name) --Usado apenas por comando de chat
 				
 				return #mails
 			else
-				minetest.chat_send_player(name, S("You have no letters..."))
+				minetest.chat_send_player(name, modCorreio.translate("You have no letters..."))
 				return 0
 			end
 		end
@@ -297,13 +302,13 @@ modCorreio.chat_delreadeds = function(playername) --Usado apenas por comando de 
 			local apagados = modCorreio.del_readeds(playername)
 			if apagados~=nil and type(apagados)=="number" then
 				if apagados>=1 then
-					minetest.chat_send_player(playername, S("Letters Destroyed")..": "..apagados)
+					minetest.chat_send_player(playername, modCorreio.translate("Letters Destroyed")..": "..apagados)
 					
 				else
-					minetest.chat_send_player(playername, S("You have no letter readed to destroy"))
+					minetest.chat_send_player(playername, modCorreio.translate("You have no letter readed to destroy"))
 				end
 			else
-				minetest.chat_send_player(playername, "[ERRO] "..S("There was an error deleting your letters"))
+				minetest.chat_send_player(playername, "[ERRO] "..modCorreio.translate("There was an error deleting your letters"))
 			end
 			return apagados
 		end
@@ -360,13 +365,13 @@ modCorreio.chat_delolds = function(playername) --Usado apenas por comando de cha
 			if contdels~=nil and type(contdels)=="number" then
 				if contdels>=1 then
 					minetest.chat_send_player(playername, "[CORREIO] "..
-					S("The total of %02d letters with a deadline above %02d days have been deleted on the server"):format(contdels,modCorreio.max_days_validate))
+					modCorreio.translate("The total of %02d letters with a deadline above %02d days have been deleted on the server"):format(contdels,modCorreio.max_days_validate))
 				else
-					minetest.chat_send_player(playername,"[CORREIO] "..S("No letter with deadline above %02d days was deleted"):format(modCorreio.max_days_validate))
+					minetest.chat_send_player(playername,"[CORREIO] "..modCorreio.translate("No letter with deadline above %02d days was deleted"):format(modCorreio.max_days_validate))
 				end
 				return contdels
 			else
-				minetest.chat_send_player(playername,"[ERRO: modCorreio.chat_delolds(playername)] "..S("There was an error deleting all the '%s' old emails"):format(dump(contdels)))
+				minetest.chat_send_player(playername,"[ERRO: modCorreio.chat_delolds(playername)] "..modCorreio.translate("There was an error deleting all the '%s' old emails"):format(dump(contdels)))
 			end
 		end
 	end
@@ -410,7 +415,7 @@ modCorreio.hud_print = function(player)
 		
 		local unreadeds = modCorreio.get_countunreaded(playername)
 		if unreadeds~=nil and type(unreadeds)=="number" and unreadeds>=1 then
-			local mensagem=S("You have %02d unread emails \nin your mailbox!"):format(unreadeds)
+			local mensagem=modCorreio.translate("You have %02d unread emails \nin your mailbox!"):format(unreadeds)
 			
 			modCorreio.huds[playername].image = player:hud_add({
 				hud_elem_type = "image",
@@ -448,6 +453,71 @@ modCorreio.hud_check = function()
 		end
 	end
 end
+
+--##################################################################################
+
+modCorreio.getPropCommBroadcast = function(nameCommand)
+   return {
+      privs = {postman=true},
+      params = "<".. modCorreio.translate("message")..">",
+      description = "/"..nameCommand.." <".. modCorreio.translate("message").."> : "..modCorreio.translate("Send email to all registered players."),
+      func = function(name, param)
+         modCorreio.chat_broadcast(name, param)
+      end,
+   }
+end
+
+modCorreio.getPropCommDeleteOldMails = function(nameCommand)
+   return {
+      privs = {postman=true},
+      params = "",
+      description = "/"..nameCommand.." : "..modCorreio.translate("Delete emails older than thirty days on the entire server."),
+      func = function(playername, param)
+         modCorreio.chat_delolds(playername)
+      end,
+   }
+end
+
+modCorreio.getPropCommSendMail = function(nameCommand)
+   return {
+      privs = {postman=true},
+      params = "[<".. modCorreio.translate("playername").."> <".. modCorreio.translate("message")..">]",
+      description = "/"..nameCommand.." <".. modCorreio.translate("playername").."> <".. modCorreio.translate("message").."> : ".. modCorreio.translate("Sends email to a specific player."),
+      func = function(playername, param)
+         if type(modCorreio.openpapermail)=="function" then
+            modCorreio.openpapermail(playername)
+         else
+            modCorreio.chat_writemail(playername, param)
+         end
+      end,
+   }
+end
+
+modCorreio.getPropCommShowMailBox = function(nameCommand)
+   return {
+      privs = {walkingreader=true},
+      description = "/"..nameCommand.." : "..modCorreio.translate("Displays all of your inbox emails."),
+      func = function(playername, param)
+         if type(modCorreio.openinbox)=="function" then
+            modCorreio.openinbox(playername)
+         else
+            modCorreio.chat_readmail(playername)
+         end
+      end,
+   }
+end
+
+modCorreio.getPropCommDeleteReadMails = function(nameCommand)
+   return {
+      privs = {walkingreader=true},
+      description = "/"..nameCommand.." : "..modCorreio.translate("Deletes all emails read from the player."),
+      func = function(name, param)
+         modCorreio.chat_delreadeds(name)
+      end,
+   }
+end
+
+--##################################################################################
 
 minetest.register_globalstep(function(dtime)
 	modCorreio.hud_check()

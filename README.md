@@ -1,4 +1,4 @@
-# [CORREIO](https://github.com/lunovox/correio)
+# [CORREIO](https://github.com/lunovox/correio) 📨
 
 Adds mailbox and mail paper that allows ordinary Jogadores, without to use commands, to send messages to each other even if the recipient is not online. The player who receives a message will be warned with a letter symbol on his screen.
 
@@ -37,15 +37,16 @@ Adds mailbox and mail paper that allows ordinary Jogadores, without to use comma
   	* ````correio.hud.delay = 10```` →  Delay in seconds of notice of arrival of the new message. Need to be longer than 5 seconds to not cause lag on server
 	* ````correio.max_validate_days = 30```` → Limit how long a mail can be stored inside the mailbox. This prevents emails from players that did abandon the server.
 
+### **Privileges:**
+
 ### **Commands:**
 
  * ````/broadcast <mensagem>```` or ````/publicar <mensagem>```` → Send email to all registered players. You need priv 'postman'.
  * ````/delolds```` → Delete emails that are more than 30 days old on the whole server. Serves to relieve server memory. You need priv 'postman'.
  * ````/mail [<ToPlayer> <Message>]```` or ````/escrever [<Destinatario> <mensagem>]```` → If you do not enter parameters you will open a panel to fill the recipient and the message you want to send. You need priv 'postman'.
- * ````/read```` or ````/inbox```` or ````/ler```` → Displays incoming messages. You need priv 'postman'.
- * ````/clearmails```` or ````/limpar```` → Delete all emails already read by the player. You need priv 'postman'.
- * ````/correio```` → Displays the above mentioned commands.
- 
+ * ````/read```` or ````/inbox```` or ````/ler```` → Displays incoming messages. You need priv 'walkingreader'.
+ * ````/clearmails```` or ````/limpar```` → Delete all emails already read by the player. You need priv 'walkingreader'.
+
 ### **API:**
  * ````<mails> modCorreio.get_mails(<playername>)```` → Coleta lista de correspondencia de um determinado Jogador.
  * ````<mail> modCorreio.get_mail(<playername>, <mailnumber>)```` → Coleta uma carta de um número específico de um determinado Jogador.

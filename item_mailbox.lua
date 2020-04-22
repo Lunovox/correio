@@ -19,10 +19,10 @@ modCorreio.openinbox = function(playername)
 		local formspec = "size[8,7.5]"
 		.."label[3.25,0;CORREIO]"
 		.."textlist[0,0.7;7.7,6;selmail;"..formspecmails..";"..modCorreio.mailbox[playername].selmail..";false]"
-		.."button_exit[0.5,7;1.75,0.5;closer;"..minetest.formspec_escape(S("CLOSE")).."]"
-		.."button[2.25,7;1.75,0.5;openmail;"..minetest.formspec_escape(S("OPEN")).."]"
-		.."button[4.0,7;1.75,0.5;delmail;"..minetest.formspec_escape(S("DELETE")).."]"
-		.."button[5.75,7;1.75,0.5;clearmails;"..minetest.formspec_escape(S("CLEAR")).."]"
+		.."button_exit[0.5,7;1.75,0.5;closer;"..minetest.formspec_escape(modCorreio.translate("CLOSE")).."]"
+		.."button[2.25,7;1.75,0.5;openmail;"..minetest.formspec_escape(modCorreio.translate("OPEN")).."]"
+		.."button[4.0,7;1.75,0.5;delmail;"..minetest.formspec_escape(modCorreio.translate("DELETE")).."]"
+		.."button[5.75,7;1.75,0.5;clearmails;"..minetest.formspec_escape(modCorreio.translate("CLEAR")).."]"
 		
 		minetest.show_formspec(playername,"modCorreio.mailbox",formspec)
 	end
@@ -40,13 +40,13 @@ modCorreio.openmail = function(playername, mailnumber)
 			minetest.log('action',"[CORREIO] mail = "..dump(mail))
 			local formspec = "size[8,7.5]"
 			--.."label[2.75,0;MENSAGEM DE: "..mail.namefrom.."]"
-			.."label[0.2,0;"..minetest.formspec_escape(S("From")..": "..mail.namefrom).."]"
-			.."label[0.2,0.45;"..minetest.formspec_escape(S("When")..": "..os.date("%Y-%m-%d %Hh:%Mm:%Ss", mail.time)).."]"
-			.."button_exit[0.5,7;2,0.5;closer;"..minetest.formspec_escape(S("CLOSE")).."]"
-			.."button[2.5,7;2,0.5;openinbox;"..minetest.formspec_escape(S("BACK")).."]"
-			.."button[4.5,7;2,0.5;delmail;"..minetest.formspec_escape(S("DELETE")).."]"
+			.."label[0.2,0;"..minetest.formspec_escape(modCorreio.translate("From")..": "..mail.namefrom).."]"
+			.."label[0.2,0.45;"..minetest.formspec_escape(modCorreio.translate("When")..": "..os.date("%Y-%m-%d %Hh:%Mm:%Ss", mail.time)).."]"
+			.."button_exit[0.5,7;2,0.5;closer;"..minetest.formspec_escape(modCorreio.translate("CLOSE")).."]"
+			.."button[2.5,7;2,0.5;openinbox;"..minetest.formspec_escape(modCorreio.translate("BACK")).."]"
+			.."button[4.5,7;2,0.5;delmail;"..minetest.formspec_escape(modCorreio.translate("DELETE")).."]"
 			.."textarea[0.5,1.5;7.7,5.5;message;"..
-			minetest.formspec_escape(S("Message")..":")..";"..minetest.formspec_escape(mail.message).."]"
+			minetest.formspec_escape(modCorreio.translate("Message")..":")..";"..minetest.formspec_escape(mail.message).."]"
 			--.."textlist[0,0.7;15.5,6;selmail;"..formspecmails..";1;false]"
 		
 			modCorreio.set_read(playername, mailnumber, true)
@@ -72,7 +72,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 				minetest.log('action',"modCorreio.openmail["..playername.."].selmail="..dump(modCorreio.mailbox[playername].selmail))
 				modCorreio.openmail(playername, modCorreio.mailbox[playername].selmail)
 			else
-				minetest.chat_send_player(playername, S("Select the letter you want to open!"))
+				minetest.chat_send_player(playername, modCorreio.translate("Select the letter you want to open!"))
 			end
 		elseif fields.delmail~=nil then
 			if modCorreio.mailbox[playername].selmail~=nil and type(modCorreio.mailbox[playername].selmail)=="number" and modCorreio.mailbox[playername].selmail >=1 then
@@ -80,7 +80,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 				modCorreio.del_mail(playername, modCorreio.mailbox[playername].selmail)
 				modCorreio.openinbox(playername)
 			else
-				minetest.chat_send_player(playername, S("Select the letter you want to delete!"))
+				minetest.chat_send_player(playername, modCorreio.translate("Select the letter you want to delete!"))
 			end
 		elseif fields.clearmails~=nil then
 			minetest.log('action',"modCorreio.chat_delreadeds("..playername..")")
@@ -102,12 +102,12 @@ local mailbox_tiles = {
 	"tex_mailbox_sides.png", --direita
 	"tex_mailbox_sides.png".."^[transformFX", --esquerda
 	"tex_mailbox_back.png", --traz
-	"tex_mailbox_from.png^"..S("tex_mailbox_from_en.png"), --frente
+	"tex_mailbox_from.png^"..modCorreio.translate("tex_mailbox_from_en.png"), --frente
 	--
 }
 
 minetest.register_node("correio:mailbox", {
-	description = S("Mailbox (Displays Letters Received)"),
+	description = modCorreio.translate("Mailbox (Displays Letters Received)"),
 	inventory_image = "obj_mailbox.png",
 	--inventory_image = minetest.inventorycube("tex_light.png"),
 	drawtype = "nodebox",
@@ -126,7 +126,7 @@ minetest.register_node("correio:mailbox", {
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.env:get_meta(pos)
 		local owner = placer:get_player_name()
-		meta:set_string("infotext", S("'%s' Mailbox"):format(owner))
+		meta:set_string("infotext", modCorreio.translate("'%s' Mailbox"):format(owner))
 		meta:set_string("owner",owner)
 	end,
 	can_dig = function(pos, player)
@@ -135,7 +135,7 @@ minetest.register_node("correio:mailbox", {
 			local ownername = meta:get_string("owner")
 			local playername = player:get_player_name()
 			if ownername~=nil and ownername~="" and ownername~=playername then
-				minetest.chat_send_player(playername, S("You can not destroy the '%s' mailbox!"):format(ownername))
+				minetest.chat_send_player(playername, modCorreio.translate("You can not destroy the '%s' mailbox!"):format(ownername))
 				return false
 			else
 				return true
@@ -153,7 +153,7 @@ minetest.register_node("correio:mailbox", {
 				if ownername==clickername then
 					modCorreio.openinbox(ownername)
 				else
-					minetest.chat_send_player(clickername, S("This mailbox belongs to '%s'!"):format(ownername))
+					minetest.chat_send_player(clickername, modCorreio.translate("This mailbox belongs to '%s'!"):format(ownername))
 				end
 			end
 		end
@@ -169,4 +169,4 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_alias(S("mailbox")		,"correio:mailbox")
+minetest.register_alias(modCorreio.translate("mailbox")		,"correio:mailbox")
