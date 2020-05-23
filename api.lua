@@ -1,10 +1,15 @@
 minetest.register_privilege("postman",  {
-	description=modCorreio.translate("Player can send messages directly by command."), 
+	description=modCorreio.translate("The player can broadcast messages to all players at the same time."), 
+	give_to_singleplayer=false,
+})
+
+minetest.register_privilege("walkingwriter",  {
+	description=modCorreio.translate("The player can write a message to a specific player directly by command."), 
 	give_to_singleplayer=false,
 })
 
 minetest.register_privilege("walkingreader",  {
-	description=modCorreio.translate("Player can readd messages directly by command."), 
+	description=modCorreio.translate("The player can read his message inbox directly by command."), 
 	give_to_singleplayer=false,
 })
 
@@ -22,26 +27,33 @@ end
 modCorreio.set_mail = function(namefrom, nameto, message)
 	if namefrom~=nil and type(namefrom)=="string" and namefrom~="" then
 		if nameto~=nil and type(nameto)=="string" and nameto~="" then
-			if message~=nil and type(message)=="string" and message~="" then
-				local tmp = { }
-				tmp.namefrom = namefrom
-				tmp.message = modCorreio.regulechars(message)
-				tmp.time = os.time()
-				tmp.readed = false
-				
-				local tblCorreio=modCorreio.getDataBase(nameto)
-				table.insert(tblCorreio.messages,tmp)
-				modCorreio.setDataBase(nameto, tblCorreio)
-				
-				return tmp
+			if minetest.player_exists(nameto) then
+				if message~=nil and type(message)=="string" and message~="" then
+					local tmp = { }
+					tmp.namefrom = namefrom
+					tmp.message = modCorreio.regulechars(message)
+					tmp.time = os.time()
+					tmp.readed = false
+					
+					local tblCorreio=modCorreio.getDataBase(nameto)
+					table.insert(tblCorreio.messages,tmp)
+					modCorreio.setDataBase(nameto, tblCorreio)
+					
+					return tmp
+				else
+					minetest.log("error","[modCorreio.set_mail(namefrom="..dump(namefrom)..", nameto = "..dump(nameto)..")]\n\nmessage = "..dump(message))
+				end
 			else
-				minetest.log("error","[modCorreio.set_mail()] message = "..dump(message))
+				minetest.log("error",
+					"[modCorreio.set_mail(namefrom="..dump(namefrom)..", nameto="..dump(nameto)..")] "
+					..modCorreio.translate("The nameto '%s' is not a registered player name!"):format(nameto)
+				)
 			end
 		else
-			minetest.log("error","[modCorreio.set_mail()] nameto = "..dump(nameto))
+			minetest.log("error","[modCorreio.set_mail(namefrom="..dump(namefrom)..", nameto = "..dump(nameto)..")] ")
 		end
 	else
-		minetest.log("error","[modCorreio.set_mail()] namefrom = "..dump(namefrom))
+		minetest.log("error","[modCorreio.set_mail(namefrom="..dump(namefrom)..")] ")
 	end
 end
 
@@ -49,9 +61,11 @@ modCorreio.chat_writemail = function(name, param) --Usado apenas por comando de 
 	if name~=nil and type(name)=="string" and name~="" then
 		if param~=nil and type(param)=="string" and param~="" then
 			local to, msg = string.match(param, "([%a%d_]+) (.+)")
-			
 			if not to or not msg then
-				minetest.chat_send_player(name,"/mail <to_player> <mensagem>")
+				minetest.chat_send_player(name,
+					core.colorize("#FF0000", "[CORREIO:ERRO] ")..
+					"/"..modCorreio.translate("mail").." ".."[<".. modCorreio.translate("playername").."> <".. modCorreio.translate("message")..">]"
+				)
 				return false
 			end
 			
@@ -59,17 +73,34 @@ modCorreio.chat_writemail = function(name, param) --Usado apenas por comando de 
 			print(modCorreio.translate("Addressee")..": "..to) --Destinatário
 			print(modCorreio.translate("Message")..": "..msg) --Mensagem
 			
-			
-			local result = modCorreio.set_mail(name, to, msg)
-			if result~=nil then
-				minetest.chat_send_player(name,modCorreio.translate("Your message was sent to '$s'!"):format(to))
-				
-				return true
+			if minetest.player_exists(to) then
+				local result = modCorreio.set_mail(name, to, msg)
+				if result~=nil then
+					minetest.chat_send_player(name,
+						ccore.colorize("#00FF00", "[CORREIO] ")..
+						modCorreio.translate("Your message was sent to '%s'!"):format(to)
+					)
+					
+					return true
+				else
+					minetest.chat_send_player(name, 
+						core.colorize("#FF0000", "[CORREIO:ERRO] ")..
+						modCorreio.translate("There was an error sending your message!!!")
+					)
+				end
 			else
-				minetest.chat_send_player(name, modCorreio.translate("There was an error sending your message!!!"))
+				minetest.chat_send_player(name,
+					core.colorize("#FF0000", "[CORREIO:ERRO] ")..
+					modCorreio.translate("The Addressee '%s' is not a registered player name!"):format(to)
+				)
 			end
 		else
-			minetest.chat_send_player(name,modCorreio.translate("/mail [<playername> <message>]: Sends email to a player"))
+			if type(modCorreio.openpapermail)~="function" then
+				minetest.chat_send_player(name,
+					core.colorize("#FF0000", "[CORREIO:ERRO] ")..
+					modCorreio.translate("/mail [<playername> <message>]: Sends email to a player")
+				)
+			end
 		end
 	end
 	return false
@@ -137,6 +168,7 @@ end
 
 modCorreio.regulechars = function(text)
 	text = text:gsub("\r", "")
+	text = text:gsub("\\([nt])", {n="\n", t="\t"}) --FONTE: https://stackoverflow.com/questions/57099292/replace-n-string-with-real-n-in-lua
 
 	text = text:gsub("[Â]", "A")
 	text = text:gsub("[Ä]", "A")
@@ -224,9 +256,15 @@ modCorreio.get_formspecmails = function(playername)
 				mensagem = modCorreio.regulechars(mensagem)
 				
 				if mail.readed == true then
-					formspeclist = formspeclist .. minetest.formspec_escape(os.date("%Y-%m-%d %Hh:%Mm:%Ss", mail.time).." [X] <"..mail.namefrom.."> ".. modCorreio.regulechars(mensagem))
+					formspeclist = formspeclist .. minetest.formspec_escape(
+						--os.date("%Y-%m-%d %Hh:%Mm:%Ss", mail.time).." "..
+						"[X] <"..mail.namefrom.."> ".. modCorreio.regulechars(mensagem)
+					)
 				else
-					formspeclist = formspeclist .. minetest.formspec_escape(os.date("%Y-%m-%d %Hh:%Mm:%Ss", mail.time).." [  ] <"..mail.namefrom.."> ".. modCorreio.regulechars(mensagem))
+					formspeclist = formspeclist .. minetest.formspec_escape(
+						--os.date("%Y-%m-%d %Hh:%Mm:%Ss", mail.time).." "..
+						"[  ] <"..mail.namefrom.."> ".. modCorreio.regulechars(mensagem)
+					)
 				end
 				if n < #mails then
 					formspeclist = formspeclist .. ","
@@ -480,15 +518,14 @@ end
 
 modCorreio.getPropCommSendMail = function(nameCommand)
    return {
-      privs = {postman=true},
+      privs = {walkingwriter=true},
       params = "[<".. modCorreio.translate("playername").."> <".. modCorreio.translate("message")..">]",
       description = "/"..nameCommand.." <".. modCorreio.translate("playername").."> <".. modCorreio.translate("message").."> : ".. modCorreio.translate("Sends email to a specific player."),
       func = function(playername, param)
-         if type(modCorreio.openpapermail)=="function" then
-            modCorreio.openpapermail(playername)
-         else
-            modCorreio.chat_writemail(playername, param)
-         end
+   		local rightparam = modCorreio.chat_writemail(playername, param)
+   		if rightparam~=true and type(modCorreio.openpapermail)=="function" then
+      		modCorreio.openpapermail(playername)
+      	end
       end,
    }
 end

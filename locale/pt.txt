@@ -15,10 +15,35 @@ When=Quando
 Message=Mensagem
 Letters Destroyed=Cartas Destruidas
 
-# ------------- comands ---------------------
+# ------------- commands --------------------
 
 /mail [<playername> <message>]: Sends email to a player=/escrever [<destinatário> <mensagem>]: Envia email para um player
 /broadcast <message>: Sends letters to all registered players=/publicar <mensagem>: Envia cartas para todos os jogadores cadastrados
+
+broadcast=publicar
+delolds=apagarvelhos
+sendmail=enviarcarta
+mail=carta
+write=escrever
+readmail=lercartas
+showmail=mostrarcartas
+read=ler
+inbox=caixadeentrada
+clearmails=limparcartas
+
+message=mensagem
+playername=nome_do_jogador
+
+The player can broadcast messages to all players at the same time.=O jogador pode transmitir mensagens para todos os jogadores ao mesmo tempo.
+The player can write a message to a specific player directly by command.=O jogador pode escrever uma mensagem para um jogador específico diretamente por comando.
+The player can read his message inbox directly by command.=O jogador pode ler sua caixa de entrada de mensagens diretamente por comando.
+
+The Addressee '%s' is not a registered player name!=O destinatário '%s' não é um nome de jogador registrado!
+Send email to all registered players.=Envia uma carta para todos os jogadores registrados.
+Delete emails older than thirty days on the entire server.=Apaga cartas com mais de trinta dias em todo o servidor.
+Sends email to a specific player.=Envia uma carta para um jogador específico.
+Displays all of your inbox emails.=Exibe todas as suas cartas da caixa de entrada.
+Deletes all emails read from the player.=Exclui todas as suas cartas lidas do jogador.
 
 # ------------- Texture Mailbox ---------------------
 
@@ -58,12 +83,14 @@ The total of %02d letters with a deadline above %02d days have been deleted on t
 No letter with deadline above %02d days was deleted=Nenhuma carta com prazo acima de %02d dias foi excluída
 There was an error deleting all the '%s' old emails=Ocorreu um erro ao apagar todos os '%s' emails antigos
 You have %02d unread emails \nin your mailbox!=Voce tem %02d mensagens não \nlidas em sua caixa de correio!
-Your message was sent to '$s'!=Sua mensagem foi enviada para '$s'!
+Your message was sent to '%s'!=Sua mensagem foi enviada para '%s'!
 
 Select the letter you want to open!=Selecione a carta que deseja abrir!
 Select the letter you want to delete!=Selecione a carta que deseja excluir!
 You can not destroy the '%s' mailbox!=Você não pode destruir a caixa de correio de '%s'!
 This mailbox belongs to '%s'!=Esta caixa de correio pertece a '%s'!
+
+The name '%s' is not a registered player name!=O nome '%s' não é um nome de jogador registrado!
 
 # ------------- alias name ---------------------
 mailbox=caixadecorreio

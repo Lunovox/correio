@@ -72,7 +72,10 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 				minetest.log('action',"modCorreio.openmail["..playername.."].selmail="..dump(modCorreio.mailbox[playername].selmail))
 				modCorreio.openmail(playername, modCorreio.mailbox[playername].selmail)
 			else
-				minetest.chat_send_player(playername, modCorreio.translate("Select the letter you want to open!"))
+				minetest.chat_send_player(playername, 
+					core.colorize("#FF0000", "[CORREIO:ERRO] ")..
+					modCorreio.translate("Select the letter you want to open!")
+				)
 			end
 		elseif fields.delmail~=nil then
 			if modCorreio.mailbox[playername].selmail~=nil and type(modCorreio.mailbox[playername].selmail)=="number" and modCorreio.mailbox[playername].selmail >=1 then
@@ -80,7 +83,10 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 				modCorreio.del_mail(playername, modCorreio.mailbox[playername].selmail)
 				modCorreio.openinbox(playername)
 			else
-				minetest.chat_send_player(playername, modCorreio.translate("Select the letter you want to delete!"))
+				minetest.chat_send_player(playername, 
+					core.colorize("#FF0000", "[CORREIO:ERRO] ")..
+					modCorreio.translate("Select the letter you want to delete!")
+				)
 			end
 		elseif fields.clearmails~=nil then
 			minetest.log('action',"modCorreio.chat_delreadeds("..playername..")")

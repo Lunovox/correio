@@ -4,6 +4,7 @@ minetest.register_chatcommand(modCorreio.translate("delolds"), modCorreio.getPro
 
 minetest.register_chatcommand(modCorreio.translate("sendmail"), modCorreio.getPropCommSendMail(modCorreio.translate("sendmail")))
 minetest.register_chatcommand(modCorreio.translate("mail"), modCorreio.getPropCommSendMail(modCorreio.translate("mail")))
+minetest.register_chatcommand(modCorreio.translate("write"), modCorreio.getPropCommSendMail(modCorreio.translate("mail")))
 --minetest.register_chatcommand(modCorreio.translate("sm"), modCorreio.getPropCommSendMail(modCorreio.translate("sm")))
 
 minetest.register_chatcommand(modCorreio.translate("readmail"), modCorreio.getPropCommShowMailBox(modCorreio.translate("readmail")))
