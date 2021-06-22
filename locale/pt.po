@@ -1,0 +1,307 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-22 15:30-0300\n"
+"PO-Revision-Date: 2021-06-22 15:37-0300\n"
+"Last-Translator: Lunovox Heavenfinder <lunovox@disroot.org>\n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: api.lua:2
+msgid "The player can broadcast messages to all players at the same time."
+msgstr ""
+"O jogador pode transmitir mensagens para todos os jogadores ao mesmo tempo."
+
+#: api.lua:7
+msgid ""
+"The player can write a message to a specific player directly by command."
+msgstr ""
+"O jogador pode escrever uma mensagem para um jogador específico diretamente "
+"por comando."
+
+#: api.lua:12
+msgid "The player can read his message inbox directly by command."
+msgstr ""
+"O jogador pode ler sua caixa de entrada de mensagens diretamente por comando."
+
+#: api.lua:49
+#, lua-format
+msgid "The name of '%s' is not a registered player name!"
+msgstr "O nome de '%s' não é um nome de jogador registrado!"
+
+#: api.lua:67 chatcommand.lua:6 chatcommand.lua:7 item_papermail.lua:107
+msgid "mail"
+msgstr "carta"
+
+#: api.lua:67 api.lua:523 api.lua:524
+msgid "playername"
+msgstr "nome_do_jogador"
+
+#: api.lua:67 api.lua:501 api.lua:502 api.lua:523 api.lua:524
+msgid "message"
+msgstr "mensagem"
+
+#: api.lua:72
+msgid "Sender"
+msgstr "Remetente"
+
+#: api.lua:73 item_papermail.lua:15
+msgid "Addressee"
+msgstr "Destinatário"
+
+#: api.lua:74 item_mailbox.lua:49 item_papermail.lua:16
+msgid "Message"
+msgstr "Mensagem"
+
+#: api.lua:81
+#, lua-format
+msgid "Your message was sent to '%s'!"
+msgstr "Sua mensagem foi enviada para '%s'!"
+
+#: api.lua:88
+msgid "There was an error sending your message!!!"
+msgstr "Ocorreu um erro ao enviar sua mensagem!!!"
+
+#: api.lua:94
+#, lua-format
+msgid "The Addressee '%s' is not a registered player name!"
+msgstr "O destinatário '%s' não é um nome de jogador registrado!"
+
+#: api.lua:101
+msgid "/mail [<playername> <message>]: Sends email to a player"
+msgstr "/escrever [<destinatário> <mensagem>]: Envia email para um player"
+
+#: api.lua:136
+#, lua-format
+msgid "Your letter was sent to '%02d' players"
+msgstr "Sua carta foi enviada para '%02d' jogadores"
+
+#: api.lua:139
+msgid "This letter was not sent to any player"
+msgstr "Esta carta não foi enviada para nenhum jogador"
+
+#: api.lua:143
+msgid "/broadcast <message>: Sends letters to all registered players"
+msgstr "/publicar <mensagem>: Envia cartas para todos os jogadores cadastrados"
+
+#: api.lua:297
+msgid "You have no letters..."
+msgstr "Você não tem nenhuma carta..."
+
+#: api.lua:344
+msgid "Letters Destroyed"
+msgstr "Cartas Destruidas"
+
+#: api.lua:347
+msgid "You have no letter readed to destroy"
+msgstr "Você não tem nenhuma carta lida para destruir"
+
+#: api.lua:350
+msgid "There was an error deleting your letters"
+msgstr "Ocorreu um erro ao apagar suas cartas"
+
+#: api.lua:407
+#, lua-format
+msgid ""
+"The total of %02d letters with a deadline above %02d days have been deleted "
+"on the server"
+msgstr ""
+"O total de %02d cartas com prazo acima de %02d dias foram apagadas no "
+"servidor"
+
+#: api.lua:409
+#, lua-format
+msgid "No letter with deadline above %02d days was deleted"
+msgstr "Nenhuma carta com prazo acima de %02d dias foi excluída"
+
+#: api.lua:413
+#, lua-format
+msgid "There was an error deleting all the '%s' old emails"
+msgstr "Ocorreu um erro ao apagar todos os '%s' emails antigos"
+
+#: api.lua:457
+#, lua-format
+msgid "You have %02d unread emails in your mailbox!"
+msgstr "Voce tem %02d mensagens não lidas em sua caixa de correio!"
+
+#: api.lua:502
+msgid "Send email to all registered players."
+msgstr "Envia uma carta para todos os jogadores registrados."
+
+#: api.lua:513
+msgid "Delete emails older than thirty days on the entire server."
+msgstr "Apaga cartas com mais de trinta dias em todo o servidor."
+
+#: api.lua:524
+msgid "Sends email to a specific player."
+msgstr "Envia uma carta para um jogador específico."
+
+#: api.lua:537
+msgid "Displays all of your inbox emails."
+msgstr "Displays all of your inbox emails."
+
+#: api.lua:551
+msgid "Deletes all emails read from the player."
+msgstr "Exibe todas as suas cartas da caixa de entrada."
+
+#: chatcommand.lua:1
+msgid "broadcast"
+msgstr "publicar"
+
+#: chatcommand.lua:2
+msgid "delolds"
+msgstr "apagarvelhos"
+
+#: chatcommand.lua:5
+msgid "sendmail"
+msgstr "enviarcarta"
+
+#: chatcommand.lua:7
+msgid "write"
+msgstr "escrever"
+
+#: chatcommand.lua:10
+msgid "readmail"
+msgstr "lercartas"
+
+#: chatcommand.lua:11
+msgid "showmail"
+msgstr "mostrarcartas"
+
+#: chatcommand.lua:12
+msgid "read"
+msgstr "ler"
+
+#: chatcommand.lua:13
+msgid "inbox"
+msgstr "caixadeentrada"
+
+#: chatcommand.lua:18
+msgid "clearmails"
+msgstr "limparcartas"
+
+#: item_brazutec.lua:9
+#, lua-format
+msgid "Player '%s' is trying to open the mailbox via the brazutec notebook!"
+msgstr ""
+"O jogador '%s' está tentando abrir a caixa de correio através do notebook "
+"brazutec!"
+
+#: item_mailbox.lua:22 item_mailbox.lua:45
+msgid "CLOSE"
+msgstr "FECHAR"
+
+#: item_mailbox.lua:23
+msgid "OPEN"
+msgstr "ABRIR"
+
+#: item_mailbox.lua:24 item_mailbox.lua:47
+msgid "DELETE"
+msgstr "EXCLUIR"
+
+#: item_mailbox.lua:25
+msgid "CLEAR"
+msgstr "LIMPAR"
+
+#: item_mailbox.lua:43
+msgid "From"
+msgstr "Remetente"
+
+#: item_mailbox.lua:44
+msgid "When"
+msgstr "Quando"
+
+#: item_mailbox.lua:46
+msgid "BACK"
+msgstr "VOLTAR"
+
+#: item_mailbox.lua:77
+msgid "Select the letter you want to open!"
+msgstr "Selecione a carta que deseja abrir!"
+
+#: item_mailbox.lua:88
+msgid "Select the letter you want to delete!"
+msgstr "Selecione a carta que deseja excluir!"
+
+#: item_mailbox.lua:111
+msgid "tex_mailbox_from_en.png"
+msgstr "tex_mailbox_from_pt.png"
+
+#: item_mailbox.lua:116
+msgid "Mailbox (Displays Letters Received)"
+msgstr "Caixa de Correio (Exibe Cartas Recebida)"
+
+#: item_mailbox.lua:135
+#, lua-format
+msgid "'%s' Mailbox"
+msgstr "Caixa de Correio de '%s'"
+
+#: item_mailbox.lua:144
+#, lua-format
+msgid "You can not destroy the '%s' mailbox!"
+msgstr "Você não pode destruir a caixa de correio de '%s'!"
+
+#: item_mailbox.lua:162
+#, lua-format
+msgid "This mailbox belongs to '%s'!"
+msgstr "Esta caixa de correio pertece a '%s'!"
+
+#: item_mailbox.lua:178
+msgid "mailbox"
+msgstr "caixadecorreio"
+
+#: item_papermail.lua:14
+msgid "MAIL LETTER"
+msgstr "CARTA DE CORREIO"
+
+#: item_papermail.lua:17
+msgid "\\n = enter | \\t = tab"
+msgstr "\\n = enter | \\t = tab"
+
+#: item_papermail.lua:18
+msgid "SEND"
+msgstr "ENVIAR"
+
+#: item_papermail.lua:45
+msgid "Your message has been sent successfully!"
+msgstr "Sua mensagem foi enviada com sucesso!"
+
+#: item_papermail.lua:50
+msgid ""
+"There was an unexpected crash while sending your message! (Please contact "
+"the mod's developer mod 'CORREIO'!)"
+msgstr ""
+"Houve uma falha inesperada ao enviar sua mensagem! (Entre em contato dom o "
+"desenvolvedor do mod 'CORREIO'!)"
+
+#: item_papermail.lua:56
+#, lua-format
+msgid "The name '%s' is not a registered player name!"
+msgstr "O nome '%s' não é um nome de jogador registrado!"
+
+#: item_papermail.lua:62
+msgid "Please enter a message before sending your letter!"
+msgstr "Favor digite uma mensagem antes de enviar sua carta!"
+
+#: item_papermail.lua:68
+msgid "Please enter the exact name of the player who received your letter!"
+msgstr "Favor digite o nome exato do jogador que recebera sua carta!"
+
+#: item_papermail.lua:76
+msgid "Letter of Mail (Send a letter to other player)"
+msgstr "Carta de Correio (Enviar uma carta a outro jogador)"
+
+#: item_papermail.lua:108
+msgid "letter"
+msgstr "cartadecorreio"

@@ -46,7 +46,7 @@ modCorreio.set_mail = function(namefrom, nameto, message)
 			else
 				minetest.log("error",
 					"[modCorreio.set_mail(namefrom="..dump(namefrom)..", nameto="..dump(nameto)..")] "
-					..modCorreio.translate("The nameto '%s' is not a registered player name!"):format(nameto)
+					..modCorreio.translate("The name of '%s' is not a registered player name!"):format(nameto)
 				)
 			end
 		else
@@ -454,7 +454,7 @@ modCorreio.hud_print = function(player)
 		
 		local unreadeds = modCorreio.get_countunreaded(playername)
 		if unreadeds~=nil and type(unreadeds)=="number" and unreadeds>=1 then
-			local mensagem=modCorreio.translate("You have %02d unread emails \nin your mailbox!"):format(unreadeds)
+			local mensagem=modCorreio.translate("You have %02d unread emails in your mailbox!"):format(unreadeds)
 			
 			modCorreio.huds[playername].image = player:hud_add({
 				hud_elem_type = "image",

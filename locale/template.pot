@@ -1,0 +1,296 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-22 15:42-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: api.lua:2
+msgid "The player can broadcast messages to all players at the same time."
+msgstr ""
+
+#: api.lua:7
+msgid ""
+"The player can write a message to a specific player directly by command."
+msgstr ""
+
+#: api.lua:12
+msgid "The player can read his message inbox directly by command."
+msgstr ""
+
+#: api.lua:49
+#, lua-format
+msgid "The name of '%s' is not a registered player name!"
+msgstr ""
+
+#: api.lua:67 chatcommand.lua:6 chatcommand.lua:7 item_papermail.lua:107
+msgid "mail"
+msgstr ""
+
+#: api.lua:67 api.lua:523 api.lua:524
+msgid "playername"
+msgstr ""
+
+#: api.lua:67 api.lua:501 api.lua:502 api.lua:523 api.lua:524
+msgid "message"
+msgstr ""
+
+#: api.lua:72
+msgid "Sender"
+msgstr ""
+
+#: api.lua:73 item_papermail.lua:15
+msgid "Addressee"
+msgstr ""
+
+#: api.lua:74 item_mailbox.lua:49 item_papermail.lua:16
+msgid "Message"
+msgstr ""
+
+#: api.lua:81
+#, lua-format
+msgid "Your message was sent to '%s'!"
+msgstr ""
+
+#: api.lua:88
+msgid "There was an error sending your message!!!"
+msgstr ""
+
+#: api.lua:94
+#, lua-format
+msgid "The Addressee '%s' is not a registered player name!"
+msgstr ""
+
+#: api.lua:101
+msgid "/mail [<playername> <message>]: Sends email to a player"
+msgstr ""
+
+#: api.lua:136
+#, lua-format
+msgid "Your letter was sent to '%02d' players"
+msgstr ""
+
+#: api.lua:139
+msgid "This letter was not sent to any player"
+msgstr ""
+
+#: api.lua:143
+msgid "/broadcast <message>: Sends letters to all registered players"
+msgstr ""
+
+#: api.lua:297
+msgid "You have no letters..."
+msgstr ""
+
+#: api.lua:344
+msgid "Letters Destroyed"
+msgstr ""
+
+#: api.lua:347
+msgid "You have no letter readed to destroy"
+msgstr ""
+
+#: api.lua:350
+msgid "There was an error deleting your letters"
+msgstr ""
+
+#: api.lua:407
+#, lua-format
+msgid ""
+"The total of %02d letters with a deadline above %02d days have been deleted "
+"on the server"
+msgstr ""
+
+#: api.lua:409
+#, lua-format
+msgid "No letter with deadline above %02d days was deleted"
+msgstr ""
+
+#: api.lua:413
+#, lua-format
+msgid "There was an error deleting all the '%s' old emails"
+msgstr ""
+
+#: api.lua:457
+#, lua-format
+msgid "You have %02d unread emails in your mailbox!"
+msgstr ""
+
+#: api.lua:502
+msgid "Send email to all registered players."
+msgstr ""
+
+#: api.lua:513
+msgid "Delete emails older than thirty days on the entire server."
+msgstr ""
+
+#: api.lua:524
+msgid "Sends email to a specific player."
+msgstr ""
+
+#: api.lua:537
+msgid "Displays all of your inbox emails."
+msgstr ""
+
+#: api.lua:551
+msgid "Deletes all emails read from the player."
+msgstr ""
+
+#: chatcommand.lua:1
+msgid "broadcast"
+msgstr ""
+
+#: chatcommand.lua:2
+msgid "delolds"
+msgstr ""
+
+#: chatcommand.lua:5
+msgid "sendmail"
+msgstr ""
+
+#: chatcommand.lua:7
+msgid "write"
+msgstr ""
+
+#: chatcommand.lua:10
+msgid "readmail"
+msgstr ""
+
+#: chatcommand.lua:11
+msgid "showmail"
+msgstr ""
+
+#: chatcommand.lua:12
+msgid "read"
+msgstr ""
+
+#: chatcommand.lua:13
+msgid "inbox"
+msgstr ""
+
+#: chatcommand.lua:18
+msgid "clearmails"
+msgstr ""
+
+#: item_brazutec.lua:9
+#, lua-format
+msgid "Player '%s' is trying to open the mailbox via the brazutec notebook!"
+msgstr ""
+
+#: item_mailbox.lua:22 item_mailbox.lua:45
+msgid "CLOSE"
+msgstr ""
+
+#: item_mailbox.lua:23
+msgid "OPEN"
+msgstr ""
+
+#: item_mailbox.lua:24 item_mailbox.lua:47
+msgid "DELETE"
+msgstr ""
+
+#: item_mailbox.lua:25
+msgid "CLEAR"
+msgstr ""
+
+#: item_mailbox.lua:43
+msgid "From"
+msgstr ""
+
+#: item_mailbox.lua:44
+msgid "When"
+msgstr ""
+
+#: item_mailbox.lua:46
+msgid "BACK"
+msgstr ""
+
+#: item_mailbox.lua:77
+msgid "Select the letter you want to open!"
+msgstr ""
+
+#: item_mailbox.lua:88
+msgid "Select the letter you want to delete!"
+msgstr ""
+
+#: item_mailbox.lua:111
+msgid "tex_mailbox_from_en.png"
+msgstr ""
+
+#: item_mailbox.lua:116
+msgid "Mailbox (Displays Letters Received)"
+msgstr ""
+
+#: item_mailbox.lua:135
+#, lua-format
+msgid "'%s' Mailbox"
+msgstr ""
+
+#: item_mailbox.lua:144
+#, lua-format
+msgid "You can not destroy the '%s' mailbox!"
+msgstr ""
+
+#: item_mailbox.lua:162
+#, lua-format
+msgid "This mailbox belongs to '%s'!"
+msgstr ""
+
+#: item_mailbox.lua:178
+msgid "mailbox"
+msgstr ""
+
+#: item_papermail.lua:14
+msgid "MAIL LETTER"
+msgstr ""
+
+#: item_papermail.lua:17
+msgid "\\n = enter | \\t = tab"
+msgstr ""
+
+#: item_papermail.lua:18
+msgid "SEND"
+msgstr ""
+
+#: item_papermail.lua:45
+msgid "Your message has been sent successfully!"
+msgstr ""
+
+#: item_papermail.lua:50
+msgid ""
+"There was an unexpected crash while sending your message! (Please contact "
+"the mod's developer mod 'CORREIO'!)"
+msgstr ""
+
+#: item_papermail.lua:56
+#, lua-format
+msgid "The name '%s' is not a registered player name!"
+msgstr ""
+
+#: item_papermail.lua:62
+msgid "Please enter a message before sending your letter!"
+msgstr ""
+
+#: item_papermail.lua:68
+msgid "Please enter the exact name of the player who received your letter!"
+msgstr ""
+
+#: item_papermail.lua:76
+msgid "Letter of Mail (Send a letter to other player)"
+msgstr ""
+
+#: item_papermail.lua:108
+msgid "letter"
+msgstr ""
